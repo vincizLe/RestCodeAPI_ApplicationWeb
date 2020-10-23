@@ -4,23 +4,27 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace RestCode_WebApplication.Resources
 {
-    public class SaveRestaurantResource
+    public class SaveDailySaleResource
     {
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
+        public int QuantityDailySales { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string Address { get; set; }
-
-        [MaxLength(9)]
-        public int CellphoneNumber { get; set; }
+        public float Incomes { get; set; }
 
         [Required]
-        [MaxLength(11)]
-        public long Ruc { get; set; }
+        [MaxLength(100)]
+        public float Expenses { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string TypeMenuDay { get; set; }
+
+
     }
 }

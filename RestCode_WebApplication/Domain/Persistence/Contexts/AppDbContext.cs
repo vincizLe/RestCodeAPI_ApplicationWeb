@@ -12,6 +12,8 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<DailySale> DailySales { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -59,13 +61,13 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
                 );
 
 
-            //Restaurant Entity
+            // Restaurant Entity
             builder.Entity<Restaurant>().ToTable("Restaurants");
             builder.Entity<Restaurant>().HasKey(p => p.Id);
             builder.Entity<Restaurant>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Restaurant>().Property(p => p.Name).IsRequired().HasMaxLength(100);
             builder.Entity<Restaurant>().Property(p => p.Address).IsRequired().HasMaxLength(100);
-            builder.Entity<Restaurant>().Property(p => p.CellPhoneNumer).IsRequired().HasMaxLength(9);
+            builder.Entity<Restaurant>().Property(p => p.CellphoneNumber).HasMaxLength(9);
             builder.Entity<Restaurant>().Property(p => p.Ruc).IsRequired().HasMaxLength(11);
 
             builder.Entity<Restaurant>()
@@ -77,10 +79,42 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
             builder.Entity<Restaurant>().HasData
                 (
                     new Restaurant
-                    { Id = 300, Name = "Pepito", Address = "Av. El Sol 345", CellPhoneNumer = 976823467, Ruc = 12342313769 },
+                    { Id = 300, Name = "Pepito", Address = "Av. El Sol 345", CellphoneNumber = 976823467, Ruc = 12342313769 },
                     new Restaurant
-                    { Id = 301, Name = "McGrill", Address = "Av. Cutervo 231", CellPhoneNumer = 988746726, Ruc = 12156234229 }
+                    { Id = 301, Name = "McGrill", Address = "Av. Cutervo 231", CellphoneNumber = 988746726, Ruc = 12156234229 }
                 );
+
+            // DailySales entity
+            builder.Entity<DailySale>().ToTable("DailySales");
+            builder.Entity<DailySale>().HasKey(p => p.Id);
+            builder.Entity<DailySale>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<DailySale>().Property(p => p.QuantityDailySales).IsRequired().HasMaxLength(100);
+            builder.Entity<DailySale>().Property(p => p.Incomes).IsRequired().HasMaxLength(100);
+            builder.Entity<DailySale>().Property(p => p.Expenses).IsRequired().HasMaxLength(100);
+            builder.Entity<DailySale>().Property(p => p.TypeMenuDay).IsRequired().HasMaxLength(50);
+
+            builder.Entity<DailySale>().HasData
+                (
+                    new DailySale
+                    { Id = 100, QuantityDailySales = 40, Incomes = 100, Expenses = 60, TypeMenuDay = "Tipo de menu 1" },
+                    new DailySale
+                    { Id = 100, QuantityDailySales = 50, Incomes = 200, Expenses = 150, TypeMenuDay = "Tipo de menu 2" }
+
+                );
+            // Owners Entity
+            builder.Entity<Owner>().ToTable("Owners");
+            builder.Entity<Owner>().HasKey(p => p.Id);
+            builder.Entity<Owner>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Owner>().Property(p => p.ConnectedTime).IsRequired().HasMaxLength(100);
+
+            builder.Entity<Owner>().HasData
+                  (
+                      new Owner
+                      { Id = 100, ConnectedTime = 20 },
+                      new Owner
+                      { Id = 100, ConnectedTime = 10 }
+
+                  );
         }
 
     }
