@@ -9,7 +9,7 @@ namespace RestCode_WebApplication.Resources
     public class CommentResource
     {
         public int Id { get; set; }
-        public DateTime DatePublished { get; set; }
+        public DateTime PublishedDate { get; set; }
         public string Description { get; set; }
     }
 }

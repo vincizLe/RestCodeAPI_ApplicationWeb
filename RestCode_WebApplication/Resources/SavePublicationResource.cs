@@ -9,7 +9,7 @@ namespace RestCode_WebApplication.Resources
     public class SavePublicationResource
     {
         [Required]
-        public DateTime DatePublished { get; set; }
+        public DateTime PublishedDate { get; set; }
         [Required]
         [MaxLength(1000)]
         public string Description { get; set; }

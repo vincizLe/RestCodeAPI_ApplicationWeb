@@ -9,7 +9,7 @@ namespace RestCode_WebApplication.Resources
     public class SaveCommentResource
     {
         [Required]
-        public DateTime DatePublished { get; set; }
+        public DateTime PublishedDate { get; set; }
         [Required]
         [MaxLength(500)]
         public string Description { get; set; }
