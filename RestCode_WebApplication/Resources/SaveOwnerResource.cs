@@ -11,7 +11,7 @@ namespace RestCode_WebApplication.Resources
     {
         [Required]
         [MaxLength(100)]
-        public int ConnectedTime { get; set; }
+        public long RUC { get; set; }
                 
     }
 }

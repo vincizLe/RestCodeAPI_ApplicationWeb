@@ -8,7 +8,7 @@ namespace RestCode_WebApplication.Domain.Models
     public class Owner
     {
         public int Id { get; set; }
-        //public Profile DataOwner { get; set; }
-        public int ConnectedTime { get; set; }
+        //public Restaurant Restaurant { get; set; }
+        public long RUC { get; set; }
     }
 }

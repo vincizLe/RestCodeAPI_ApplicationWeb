@@ -7,7 +7,6 @@ namespace RestCode_WebApplication.Resources
 {
     public class OwnerResource
     {
-        public int Id { get; set; }
-        public int ConnectedTime { get; set; }
+        public long RUC;
     }
 }

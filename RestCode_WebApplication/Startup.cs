@@ -44,10 +44,14 @@ namespace RestCode_WebApplication
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+			services.AddScoped<IDailySaleRepository, DailySaleRepository>();
+			services.AddScoped<IOwnerRepository, OwnerRepository>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IRestaurantService, RestaurantService>();
+			services.AddScoped<IDailySaleService, DailySaleService>();
+			services.AddScoped<IOwnerService, OwnerService>();
 
 
             services.AddAutoMapper(typeof(Startup));

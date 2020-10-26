@@ -105,14 +105,14 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
             builder.Entity<Owner>().ToTable("Owners");
             builder.Entity<Owner>().HasKey(p => p.Id);
             builder.Entity<Owner>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Owner>().Property(p => p.ConnectedTime).IsRequired().HasMaxLength(100);
+            builder.Entity<Owner>().Property(p => p.RUC).IsRequired().HasMaxLength(100);
 
             builder.Entity<Owner>().HasData
                   (
                       new Owner
-                      { Id = 100, ConnectedTime = 20 },
+                      { Id = 100, RUC = 202010213 },
                       new Owner
-                      { Id = 100, ConnectedTime = 10 }
+                      { Id = 100, RUC = 202011212 }
 
                   );
         }
