@@ -1,0 +1,16 @@
+﻿using RestCode_WebApplication.Domain.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RestCode_WebApplication.Resources
+{
+    public class PublicationResource
+    {
+        public int Id { get; set; }
+        public DateTime DatePublished { get; set; }
+        public string Description { get; set; }
+        public IList<Comment> Comments { get; set; } = new List<Comment>();
+    }
+}

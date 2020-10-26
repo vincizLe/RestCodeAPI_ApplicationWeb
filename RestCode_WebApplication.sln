@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestCode_WebApplication", "RestCode_WebApplication\RestCode_WebApplication.csproj", "{6951EFB7-8C30-4DC2-8025-F6E9236C294D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestCode_WebApplication", "RestCode_WebApplication\RestCode_WebApplication.csproj", "{6951EFB7-8C30-4DC2-8025-F6E9236C294D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestCode.API.Test", "RestCode.API.Test\RestCode.API.Test.csproj", "{C39149A4-9058-4CCE-91E2-EC9DC9BA2DCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6951EFB7-8C30-4DC2-8025-F6E9236C294D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6951EFB7-8C30-4DC2-8025-F6E9236C294D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6951EFB7-8C30-4DC2-8025-F6E9236C294D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C39149A4-9058-4CCE-91E2-EC9DC9BA2DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C39149A4-9058-4CCE-91E2-EC9DC9BA2DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C39149A4-9058-4CCE-91E2-EC9DC9BA2DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C39149A4-9058-4CCE-91E2-EC9DC9BA2DCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
