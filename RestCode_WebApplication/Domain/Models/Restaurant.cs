@@ -15,7 +15,7 @@ namespace RestCode_WebApplication.Domain.Models
 
         public IList<Category> Categories { get; set; } = new List<Category>();
 
-        public IList<DailySale> DailySales { get; set; } = new List<DailySale>();
+        public IList<Sale> Sales { get; set; } = new List<Sale>();
 
     }
 }

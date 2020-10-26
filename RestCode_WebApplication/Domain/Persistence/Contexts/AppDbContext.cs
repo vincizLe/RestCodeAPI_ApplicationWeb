@@ -13,15 +13,10 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
         public DbSet<Product> Products { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Owner> Owners { get; set; }
-        public DbSet<DailySale> DailySales { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<SaleDetail> SaleDetails { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseMySQL("server=localhost;database=supermarket;user=root;password=password");
-        //}
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -75,6 +70,11 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
                 .WithOne(p => p.Restaurant)
                 .HasForeignKey(p => p.RestaurantId);
 
+            builder.Entity<Restaurant>()
+                .HasMany(p => p.Sales)
+                .WithOne(p => p.Restaurant)
+                .HasForeignKey(p => p.RestaurantId);
+
 
             builder.Entity<Restaurant>().HasData
                 (
@@ -83,22 +83,40 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
                     new Restaurant
                     { Id = 301, Name = "McGrill", Address = "Av. Cutervo 231", CellphoneNumber = 988746726, Ruc = 12156234229 }
                 );
+            // Sales entity
+            builder.Entity<Sale>().ToTable("Sales");
+            builder.Entity<Sale>().HasKey(p => p.Id);
+            builder.Entity<Sale>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Sale>().Property(p => p.DateAndTime).IsRequired();
+            builder.Entity<Sale>().Property(p => p.ClientFullName).IsRequired().HasMaxLength(100);
+            
+            builder.Entity<Sale>()
+                .HasMany(p => p.SaleDetails)
+                .WithOne(p => p.Sale)
+                .HasForeignKey(p => p.SaleId);
 
-            // DailySales entity
-            builder.Entity<DailySale>().ToTable("DailySales");
-            builder.Entity<DailySale>().HasKey(p => p.Id);
-            builder.Entity<DailySale>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<DailySale>().Property(p => p.QuantityDailySales).IsRequired().HasMaxLength(100);
-            builder.Entity<DailySale>().Property(p => p.Incomes).IsRequired().HasMaxLength(100);
-            builder.Entity<DailySale>().Property(p => p.Expenses).IsRequired().HasMaxLength(100);
-            builder.Entity<DailySale>().Property(p => p.TypeMenuDay).IsRequired().HasMaxLength(50);
+            builder.Entity<Sale>().HasData
+               (
+                   new Sale
+                   { Id = 150, DateAndTime = DateTime.Now.AddDays(4), ClientFullName = "Juan Perez", RestaurantId = 300 },
+                   new Sale
+                   { Id = 151, DateAndTime = DateTime.Now.AddDays(7), ClientFullName = "Jose Fulano", RestaurantId = 301 }
 
-            builder.Entity<DailySale>().HasData
+               );
+
+            // SaleDetails entity
+            builder.Entity<SaleDetail>().ToTable("SaleDetails");
+            builder.Entity<SaleDetail>().HasKey(p => p.Id);
+            builder.Entity<SaleDetail>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<SaleDetail>().Property(p => p.Description).IsRequired().HasMaxLength(300);
+            builder.Entity<SaleDetail>().Property(p => p.Quantity).IsRequired().HasMaxLength(100);
+
+            builder.Entity<SaleDetail>().HasData
                 (
-                    new DailySale
-                    { Id = 100, QuantityDailySales = 40, Incomes = 100, Expenses = 60, TypeMenuDay = "Tipo de menu 1" },
-                    new DailySale
-                    { Id = 100, QuantityDailySales = 50, Incomes = 200, Expenses = 150, TypeMenuDay = "Tipo de menu 2" }
+                    new SaleDetail
+                    { Id = 100, Description = "Description SD1", Quantity = 100, SaleId = 150 },
+                    new SaleDetail
+                    { Id = 100, Description = "Description SD2", Quantity = 200, SaleId = 151 }
 
                 );
             // Owners Entity

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace RestCode_WebApplication.Domain.Services.Communications
 {
-    public class DailySaleResponse : BaseResponse<DailySale>
+    public class SaleDetailResponse : BaseResponse<SaleDetail>
     {
-        public DailySaleResponse(string message) : base(message) { }
-        public DailySaleResponse(DailySale dailysale) : base(dailysale) { }
+        public SaleDetailResponse(string message) : base(message) { }
+        public SaleDetailResponse(SaleDetail saleDetail) : base(saleDetail) { }
 
     }
 }

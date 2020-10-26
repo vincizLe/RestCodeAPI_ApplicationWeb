@@ -36,7 +36,7 @@ namespace RestCode_WebApplication
             {
                 //options.UseInMemoryDatabase("supermarket-api-in-memory");
                 //options.UseMySQL("server=localhost;database=supermarket;user=root;password=password");
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
+                //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
                 //--
             });
 
@@ -44,13 +44,15 @@ namespace RestCode_WebApplication
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-			services.AddScoped<IDailySaleRepository, DailySaleRepository>();
+            services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddScoped<ISaleDetailRepository, SaleDetailRepository>();
 			services.AddScoped<IOwnerRepository, OwnerRepository>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IRestaurantService, RestaurantService>();
-			services.AddScoped<IDailySaleService, DailySaleService>();
+            services.AddScoped<ISaleService, SaleService>();
+            services.AddScoped<ISaleDetailService, SaleDetailService>();
 			services.AddScoped<IOwnerService, OwnerService>();
 
 
