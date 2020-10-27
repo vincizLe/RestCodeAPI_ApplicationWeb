@@ -46,7 +46,7 @@ namespace RestCode_WebApplication
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddScoped<ISaleRepository, SaleRepository>();
 			services.AddScoped<ISaleDetailRepository, SaleDetailRepository>();
-			services.AddScoped<IOwnerRepository, RestaurantRepository>();
+			services.AddScoped<IOwnerRepository, OwnerRepository>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
