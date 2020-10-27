@@ -43,6 +43,12 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
                 .HasMany(p => p.Categories)
                 .WithOne(p => p.Restaurant)
                 .HasForeignKey(p => p.RestaurantId);
+			
+			builder.Entity<Restaurant>()
+                .HasMany(p => p.Sales)
+                .WithOne(p => p.Restaurant)
+                .HasForeignKey(p => p.RestaurantId);			
+
 
             builder.Entity<Restaurant>().HasData
                 (

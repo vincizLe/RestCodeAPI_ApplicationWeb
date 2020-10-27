@@ -11,7 +11,7 @@ namespace RestCode_WebApplication.Resources
     {
         [Required]
         [MaxLength(100)]
-        public long RUC { get; set; }
+        public long Ruc { get; set; }
 
     }
 }
