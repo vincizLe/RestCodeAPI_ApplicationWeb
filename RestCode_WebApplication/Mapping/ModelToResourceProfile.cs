@@ -15,8 +15,9 @@ namespace RestCode_WebApplication.Mapping
             CreateMap<Category, CategoryResource>();
             CreateMap<Product, ProductResource>();
             CreateMap<Restaurant, RestaurantResource>();
-
-
+			CreateMap<Sale, SaleResource>();
+			CreateMap<SaleDetail, SaleDetailResource>();
+			CreateMap<Owner, OwnerResource>();
         }
     }
 }

@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace RestCode_WebApplication.Controllers
 {
     [Route("/api/[controller]")]
-    public class SaleController : Controller
+    public class SalesController : Controller
     {
         private readonly ISaleService _saleService;
         private readonly IMapper _mapper;
 
-        public SaleController(ISaleService saleService, IMapper mapper)
+        public SalesController(ISaleService saleService, IMapper mapper)
         {
             _saleService = saleService;
             _mapper = mapper;

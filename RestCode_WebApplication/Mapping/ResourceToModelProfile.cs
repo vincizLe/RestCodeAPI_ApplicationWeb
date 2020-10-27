@@ -15,6 +15,9 @@ namespace RestCode_WebApplication.Mapping
             CreateMap<SaveCategoryResource, Category>();
             CreateMap<SaveProductResource, Product>();
             CreateMap<SaveRestaurantResource, Restaurant>();
+			CreateMap<SaveSaleResource, Sale>();
+			CreateMap<SaveSaleDetailResource, SaleDetail>();
+			CreateMap<SaveOwnerResource, Owner>();
         }
     }
 }
