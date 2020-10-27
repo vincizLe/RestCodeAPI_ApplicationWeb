@@ -14,71 +14,71 @@ namespace RestCode_WebApplication.Controllers
     [Route("/api/[controller]")]
     public class SaleController : Controller
     {
-        private readonly ISaleDetailService _saleDetailService;
+        private readonly ISaleService _saleService;
         private readonly IMapper _mapper;
 
-        public SaleController(ISaleDetailService saleDetailService, IMapper mapper)
+        public SaleController(ISaleService saleService, IMapper mapper)
         {
-            _saleDetailService = saleDetailService;
+            _saleService = saleService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<SaleDetailResource>> GetAllAsync()
+        public async Task<IEnumerable<SaleResource>> GetAllAsync()
         {
-            var sale = await _saleDetailService.ListAsync();
+            var sale = await _saleService.ListAsync();
             var resources = _mapper
-                .Map<IEnumerable<SaleDetail>, IEnumerable<SaleDetailResource>>(sale);
+                .Map<IEnumerable<Sale>, IEnumerable<SaleResource>>(sale);
             return resources;
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var result = await _saleDetailService.GetByIdAsync(id);
+            var result = await _saleService.GetByIdAsync(id);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var saleDetailResource = _mapper.Map<SaleDetail, SaleDetailResource>(result.Resource);
-            return Ok(saleDetailResource);
+            var saleResource = _mapper.Map<Sale, SaleResource>(result.Resource);
+            return Ok(saleResource);
 
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] SaveSaleDetailResource resource)
+        public async Task<IActionResult> PostAsync([FromBody] SaveSaleResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
-            var saleDetail = _mapper.Map<SaveSaleDetailResource, SaleDetail>(resource);
-            var result = await _saleDetailService.SaveAsync(saleDetail);
+            var sale = _mapper.Map<SaveSaleResource, Sale>(resource);
+            var result = await _saleService.SaveAsync(sale);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var saleDetailResource = _mapper.Map<SaleDetail, SaleDetailResource>(result.Resource);
-            return Ok(saleDetailResource);
+            var saleResource = _mapper.Map<Sale, SaleResource>(result.Resource);
+            return Ok(saleResource);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveSaleDetailResource resource)
+        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveSaleResource resource)
         {
-            var saleDetail = _mapper.Map<SaveSaleDetailResource, SaleDetail>(resource);
-            var result = await _saleDetailService.UpdateAsync(id, saleDetail);
+            var sale = _mapper.Map<SaveSaleResource, Sale>(resource);
+            var result = await _saleService.UpdateAsync(id, sale);
 
             if (!result.Success)
                 return BadRequest(result.Message);
-            var saleDetailResource = _mapper.Map<SaleDetail, SaleDetailResource>(result.Resource);
-            return Ok(saleDetailResource);
+            var saleResource = _mapper.Map<Sale, SaleResource>(result.Resource);
+            return Ok(saleResource);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var result = await _saleDetailService.DeleteAsync(id);
+            var result = await _saleService.DeleteAsync(id);
 
             if (!result.Success)
                 return BadRequest(result.Message);
-            var saleDetailResource = _mapper.Map<SaleDetail, SaleDetailResource>(result.Resource);
-            return Ok(saleDetailResource);
+            var saleResource = _mapper.Map<Sale, SaleResource>(result.Resource);
+            return Ok(saleResource);
         }
     }
 }

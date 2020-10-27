@@ -53,7 +53,7 @@ namespace RestCode_WebApplication.Services
             if (existingOwner == null)
                 return new OwnerResponse("Owner not found");
 
-            existingOwner.ConnectedTime = owner.ConnectedTime;
+            existingOwner.RUC = owner.RUC;
 
             try
             {
