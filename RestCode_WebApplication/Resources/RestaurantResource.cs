@@ -8,6 +8,9 @@ namespace RestCode_WebApplication.Resources
     public class RestaurantResource
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string RestaurantName { get; set; }
+        public string RestaurantAddress { get; set; }
+        public int RestaurantCellPhoneNumber { get; set; }
+
     }
 }

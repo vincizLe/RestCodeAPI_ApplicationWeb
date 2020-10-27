@@ -12,16 +12,12 @@ namespace RestCode_WebApplication.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
-        //private readonly IUnitOfWork _unitOfWork;
-        //public ProductService(IProductRepository  productRepository, IProductTagRepository productTagRepository, IUnitOfWork unitOfWork)
-        //{
-        //    _productRepository = productRepository;
-        //    _productTagRepository = productTagRepository;
-        //    _unitOfWork = unitOfWork;
-        //}
-        public ProductService(IProductRepository productRepository)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ProductService(IProductRepository  productRepository,IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Product>> ListAsync()
@@ -29,10 +25,10 @@ namespace RestCode_WebApplication.Services
             return await _productRepository.ListAsync();
         }
 
-        //public async Task<IEnumerable<Product>> ListByCategoryIdAsync(int ProductId)
-        //{
-        //    return await _productRepository.ListByCategoryIdAsync(ProductId);
-        //}
+        public async Task<IEnumerable<Product>> ListByCategoryIdAsync(int categoryId)
+        {
+            return await _productRepository.ListByCategoryIdAsync(categoryId);
+        }
 
         public async Task<ProductResponse> GetByIdAsync(int id)
         {
@@ -48,6 +44,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 await _productRepository.AddAsync(product);
+                await _unitOfWork.CompleteAsync();
 
                 return new ProductResponse(product);
             }
@@ -64,11 +61,12 @@ namespace RestCode_WebApplication.Services
             if (existingProduct == null)
                 return new ProductResponse("Product not found");
 
-            existingProduct.Name = Product.Name;
+            existingProduct.ProductName = Product.ProductName;
 
             try
             {
                 _productRepository.Update(existingProduct);
+                await _unitOfWork.CompleteAsync();
 
                 return new ProductResponse(existingProduct);
             }
@@ -89,6 +87,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 _productRepository.Remove(existingProduct);
+                await _unitOfWork.CompleteAsync();
 
                 return new ProductResponse(existingProduct);
             }
@@ -97,7 +96,6 @@ namespace RestCode_WebApplication.Services
                 return new ProductResponse($"An error ocurred while deleting Product: {ex.Message}");
             }
         }
-
 
     }
 }

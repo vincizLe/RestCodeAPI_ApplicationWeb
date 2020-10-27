@@ -10,6 +10,7 @@ namespace RestCode_WebApplication.Domain.Services
     public interface ICategoryService
     {
         Task<IEnumerable<Category>> ListAsync();
+        Task<IEnumerable<Category>> ListByRestaurantIdAsync(int restaurantId);
         Task<CategoryResponse> GetByIdAsync(int id);
         Task<CategoryResponse> SaveAsync(Category category);
         Task<CategoryResponse> UpdateAsync(int id, Category category);

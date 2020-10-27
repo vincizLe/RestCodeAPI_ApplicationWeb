@@ -18,11 +18,11 @@ namespace RestCode_WebApplication.Persistence.Repositories
             return await _context.Products.Include(p => p.Category).ToListAsync();
         }
 
-        //public async Task<IEnumerable<Product>> ListByCategoryIdAsync(int categoryId) =>
-        //    await _context.Products
-        //    .Where(p => p.CategoryId == categoryId)
-        //    .Include(p => p.Category)
-        //    .ToListAsync();
+        public async Task<IEnumerable<Product>> ListByCategoryIdAsync(int categoryId) =>
+            await _context.Products
+            .Where(p => p.CategoryId == categoryId)
+            .Include(p => p.Category)
+            .ToListAsync();
 
         public async Task AddAsync(Product product)
         {
@@ -43,6 +43,5 @@ namespace RestCode_WebApplication.Persistence.Repositories
         {
             _context.Products.Remove(product);
         }
-
     }
 }

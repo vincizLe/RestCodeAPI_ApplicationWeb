@@ -12,17 +12,18 @@ namespace RestCode_WebApplication.Services
     public class OwnerService : IOwnerService
     {
         private readonly IOwnerRepository _ownerRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public OwnerService(IOwnerRepository ownerRepository)
+        public OwnerService(IOwnerRepository  ownerRepository, IUnitOfWork unitOfWork)
         {
             _ownerRepository = ownerRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Owner>> ListAsync()
         {
             return await _ownerRepository.ListAsync();
         }
-
         public async Task<OwnerResponse> GetByIdAsync(int id)
         {
             var existingOwner = await _ownerRepository.FindById(id);
@@ -37,6 +38,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 await _ownerRepository.AddAsync(owner);
+                await _unitOfWork.CompleteAsync();
 
                 return new OwnerResponse(owner);
             }
@@ -53,11 +55,12 @@ namespace RestCode_WebApplication.Services
             if (existingOwner == null)
                 return new OwnerResponse("Owner not found");
 
-            existingOwner.RUC = owner.RUC;
+            existingOwner.Ruc = owner.Ruc;
 
             try
             {
                 _ownerRepository.Update(existingOwner);
+                await _unitOfWork.CompleteAsync();
 
                 return new OwnerResponse(existingOwner);
             }
@@ -78,6 +81,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 _ownerRepository.Remove(existingOwner);
+                await _unitOfWork.CompleteAsync();
 
                 return new OwnerResponse(existingOwner);
             }
@@ -86,5 +90,6 @@ namespace RestCode_WebApplication.Services
                 return new OwnerResponse($"An error ocurred while deleting Owner: {ex.Message}");
             }
         }
+
     }
 }

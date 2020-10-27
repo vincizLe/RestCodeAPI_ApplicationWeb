@@ -8,14 +8,11 @@ namespace RestCode_WebApplication.Domain.Models
     public class Restaurant
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; } 
-        public int CellphoneNumber { get; set; }
-        public long Ruc { get; set; }
+        public string RestaurantName { get; set; }
+        public string RestaurantAddress { get; set; }
+        public int RestaurantCellPhoneNumber { get; set; }
 
-        public IList<Category> Categories { get; set; } = new List<Category>();
-
-        public IList<Sale> Sales { get; set; } = new List<Sale>();
+        public IList<Category>Categories{ get; set; } = new List<Category>();
 
     }
 }

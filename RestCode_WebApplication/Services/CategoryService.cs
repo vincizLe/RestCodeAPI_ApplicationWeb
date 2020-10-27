@@ -24,6 +24,10 @@ namespace RestCode_WebApplication.Services
         {
             return await _categoryRepository.ListAsync();
         }
+        public async Task<IEnumerable<Category>> ListByRestaurantIdAsync(int restaurantId)
+        {
+            return await _categoryRepository.ListByRestaurantIdAsync(restaurantId);
+        }
 
         public async Task<CategoryResponse> GetByIdAsync(int id)
         {
@@ -56,7 +60,7 @@ namespace RestCode_WebApplication.Services
             if (existingCategory == null)
                 return new CategoryResponse("Category not found");
 
-            existingCategory.Name = category.Name;
+            existingCategory.CategoryName = category.CategoryName;
 
             try
             {
@@ -91,6 +95,5 @@ namespace RestCode_WebApplication.Services
                 return new CategoryResponse($"An error ocurred while deleting category: {ex.Message}");
             }
         }
-
     }
 }

@@ -2,7 +2,6 @@
 using RestCode_WebApplication.Domain.Repositories;
 using RestCode_WebApplication.Domain.Services;
 using RestCode_WebApplication.Domain.Services.Communications;
-using RestCode_WebApplication.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +12,19 @@ namespace RestCode_WebApplication.Services
     public class SaleService : ISaleService
     {
         private readonly ISaleRepository _saleRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public SaleService(ISaleRepository saleRepository)
+        public SaleService(ISaleRepository  saleRepository, IUnitOfWork unitOfWork)
         {
             _saleRepository = saleRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Sale>> ListAsync()
         {
             return await _saleRepository.ListAsync();
         }
+                
         public async Task<SaleResponse> GetByIdAsync(int id)
         {
             var existingSale = await _saleRepository.FindById(id);
@@ -32,13 +34,14 @@ namespace RestCode_WebApplication.Services
             return new SaleResponse(existingSale);
         }
 
-        public async Task<SaleResponse> SaveAsync(Sale Sale)
+        public async Task<SaleResponse> SaveAsync(Sale sale)
         {
             try
             {
-                await _saleRepository.AddAsync(Sale);
+                await _saleRepository.AddAsync(sale);
+                await _unitOfWork.CompleteAsync();
 
-                return new SaleResponse(Sale);
+                return new SaleResponse(sale);
             }
             catch (Exception ex)
             {
@@ -59,6 +62,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 _saleRepository.Update(existingSale);
+                await _unitOfWork.CompleteAsync();
 
                 return new SaleResponse(existingSale);
             }
@@ -79,6 +83,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 _saleRepository.Remove(existingSale);
+                await _unitOfWork.CompleteAsync();
 
                 return new SaleResponse(existingSale);
             }
@@ -87,5 +92,6 @@ namespace RestCode_WebApplication.Services
                 return new SaleResponse($"An error ocurred while deleting Sale: {ex.Message}");
             }
         }
+
     }
 }

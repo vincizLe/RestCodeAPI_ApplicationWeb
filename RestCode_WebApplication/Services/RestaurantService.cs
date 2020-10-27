@@ -12,10 +12,12 @@ namespace RestCode_WebApplication.Services
     public class RestaurantService : IRestaurantService
     {
         private readonly IRestaurantRepository _restaurantRepository;
+        public readonly IUnitOfWork _unitOfWork;
 
-        public RestaurantService(IRestaurantRepository restaurantRepository)
+        public RestaurantService(IRestaurantRepository restaurantRepository, IUnitOfWork unitOfWork)
         {
             _restaurantRepository = restaurantRepository;
+            _unitOfWork = unitOfWork;   
         }
 
         public async Task<IEnumerable<Restaurant>> ListAsync()
@@ -37,6 +39,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 await _restaurantRepository.AddAsync(Restaurant);
+                await _unitOfWork.CompleteAsync();
 
                 return new RestaurantResponse(Restaurant);
             }
@@ -53,11 +56,12 @@ namespace RestCode_WebApplication.Services
             if (existingRestaurant == null)
                 return new RestaurantResponse("Restaurant not found");
 
-            existingRestaurant.Name = restaurant.Name;
+            existingRestaurant.RestaurantName = restaurant.RestaurantName;
 
             try
             {
                 _restaurantRepository.Update(existingRestaurant);
+                await _unitOfWork.CompleteAsync();
 
                 return new RestaurantResponse(existingRestaurant);
             }
@@ -78,6 +82,7 @@ namespace RestCode_WebApplication.Services
             try
             {
                 _restaurantRepository.Remove(existingRestaurant);
+                await _unitOfWork.CompleteAsync();
 
                 return new RestaurantResponse(existingRestaurant);
             }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,24 +37,17 @@ namespace RestCode_WebApplication
             {
                 //options.UseInMemoryDatabase("supermarket-api-in-memory");
                 //options.UseMySQL("server=localhost;database=supermarket;user=root;password=password");
-                //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
-                //--
+                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ISaleRepository, SaleRepository>();
-            services.AddScoped<ISaleDetailRepository, SaleDetailRepository>();
-			services.AddScoped<IOwnerRepository, OwnerRepository>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IRestaurantService, RestaurantService>();
-            services.AddScoped<ISaleService, SaleService>();
-            services.AddScoped<ISaleDetailService, SaleDetailService>();
-			services.AddScoped<IOwnerService, OwnerService>();
 
 
             services.AddAutoMapper(typeof(Startup));

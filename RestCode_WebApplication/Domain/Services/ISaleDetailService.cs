@@ -10,10 +10,11 @@ namespace RestCode_WebApplication.Domain.Services
     public interface ISaleDetailService
     {
         Task<IEnumerable<SaleDetail>> ListAsync();
-        Task<SaleDetailResponse> GetByIdAsync(int id);
+        Task<IEnumerable<SaleDetail>> ListBySaleIdAsync(int saleId);
+        Task<SaleDetailResponse> GetByIdAsync(int id);       
         Task<SaleDetailResponse> SaveAsync(SaleDetail saleDetail);
         Task<SaleDetailResponse> UpdateAsync(int id, SaleDetail saleDetail);
         Task<SaleDetailResponse> DeleteAsync(int id);
-        Task<IEnumerable<SaleDetail>> ListBySaleIdAsync(int saleId);
+        
     }
 }

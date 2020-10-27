@@ -9,6 +9,6 @@ namespace RestCode_WebApplication.Domain.Models
     {
         public int Id { get; set; }
         //public Restaurant Restaurant { get; set; }
-        public long RUC { get; set; }
+        public long Ruc { get; set; }
     }
 }

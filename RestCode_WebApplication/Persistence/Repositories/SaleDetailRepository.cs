@@ -14,7 +14,7 @@ namespace RestCode_WebApplication.Persistence.Repositories
         public SaleDetailRepository(AppDbContext context) : base(context) { }
         public async Task<IEnumerable<SaleDetail>> ListAsync()
         {
-            return await _context.SaleDetails.ToListAsync();
+            return await _context.SaleDetails.Include(p => p.Sale).ToListAsync();
         }
 
         public async Task<IEnumerable<SaleDetail>> ListBySaleIdAsync(int saleId) =>

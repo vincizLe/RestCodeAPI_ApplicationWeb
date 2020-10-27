@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+
+using Microsoft.EntityFrameworkCore;
 using RestCode_WebApplication.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -17,9 +19,38 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
         public DbSet<SaleDetail> SaleDetails { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseMySQL("server=localhost;database=supermarket;user=root;password=password");
+        //}
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            //Restaurant Entity
+            builder.Entity<Restaurant>().ToTable("Restaurants");
+
+            // Constraints
+            builder.Entity<Restaurant>().HasKey(p => p.Id);
+            builder.Entity<Restaurant>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Restaurant>().Property(p => p.RestaurantName).IsRequired().HasMaxLength(100);
+            builder.Entity<Restaurant>().Property(p => p.RestaurantAddress).IsRequired().HasMaxLength(100);
+            builder.Entity<Restaurant>().Property(p => p.RestaurantCellPhoneNumber).IsRequired().HasMaxLength(9);
+
+            builder.Entity<Restaurant>()
+                .HasMany(p => p.Categories)
+                .WithOne(p => p.Restaurant)
+                .HasForeignKey(p => p.RestaurantId);
+
+            builder.Entity<Restaurant>().HasData
+                (
+                    new Restaurant
+                    { Id = 300, RestaurantName = "Pepito", RestaurantAddress = "Av. El Sol 345", RestaurantCellPhoneNumber = 976823467},
+                    new Restaurant
+                    { Id = 301, RestaurantName = "McGrill", RestaurantAddress = "Av. Cutervo 231", RestaurantCellPhoneNumber = 988746726}
+                );
 
             // Category Entity
             builder.Entity<Category>().ToTable("Categories");
@@ -27,7 +58,7 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
             // Constraints
             builder.Entity<Category>().HasKey(p => p.Id);
             builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Category>().Property(p => p.Name).IsRequired().HasMaxLength(30);
+            builder.Entity<Category>().Property(p => p.CategoryName).IsRequired().HasMaxLength(30);
             builder.Entity<Category>()
                 .HasMany(p => p.Products)
                 .WithOne(p => p.Category)
@@ -36,60 +67,36 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
 
             builder.Entity<Category>().HasData
                 (
-                    new Category { Id = 100, Name = "Comida Criolla", RestaurantId = 300 },
-                    new Category { Id = 101, Name = "Comida Marina", RestaurantId = 301 }
+                    new Category { Id = 100, CategoryName = "Comida Criolla", RestaurantId = 300 },
+                    new Category { Id = 101, CategoryName = "Comida Marina", RestaurantId = 301 }
                 );
 
             // Product Entity
             builder.Entity<Product>().ToTable("Products");
+
+            // Constraints
             builder.Entity<Product>().HasKey(p => p.Id);
             builder.Entity<Product>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(50);
-            builder.Entity<Product>().Property(p => p.Quantity).IsRequired().HasMaxLength(3);
+            builder.Entity<Product>().Property(p => p.ProductName).IsRequired().HasMaxLength(50);
+            builder.Entity<Product>().Property(p => p.ProductPrice).IsRequired().HasMaxLength(3);
 
             builder.Entity<Product>().HasData
                 (
                     new Product
-                    { Id = 200, Name = "Arroz con Pollo", Quantity = 34, CategoryId = 100 },
+                    { Id = 200, ProductName = "Arroz con Pollo", ProductPrice = 12.5, CategoryId = 100 },
                     new Product
-                    { Id = 201, Name = "Ceviche", Quantity = 2, CategoryId = 101 }
+                    { Id = 201, ProductName = "Ceviche", ProductPrice = 13.0, CategoryId = 101 }
                 );
 
-
-            // Restaurant Entity
-            builder.Entity<Restaurant>().ToTable("Restaurants");
-            builder.Entity<Restaurant>().HasKey(p => p.Id);
-            builder.Entity<Restaurant>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Restaurant>().Property(p => p.Name).IsRequired().HasMaxLength(100);
-            builder.Entity<Restaurant>().Property(p => p.Address).IsRequired().HasMaxLength(100);
-            builder.Entity<Restaurant>().Property(p => p.CellphoneNumber).HasMaxLength(9);
-            builder.Entity<Restaurant>().Property(p => p.Ruc).IsRequired().HasMaxLength(11);
-
-            builder.Entity<Restaurant>()
-                .HasMany(p => p.Categories)
-                .WithOne(p => p.Restaurant)
-                .HasForeignKey(p => p.RestaurantId);
-
-            builder.Entity<Restaurant>()
-                .HasMany(p => p.Sales)
-                .WithOne(p => p.Restaurant)
-                .HasForeignKey(p => p.RestaurantId);
-
-
-            builder.Entity<Restaurant>().HasData
-                (
-                    new Restaurant
-                    { Id = 300, Name = "Pepito", Address = "Av. El Sol 345", CellphoneNumber = 976823467, Ruc = 12342313769 },
-                    new Restaurant
-                    { Id = 301, Name = "McGrill", Address = "Av. Cutervo 231", CellphoneNumber = 988746726, Ruc = 12156234229 }
-                );
             // Sales entity
             builder.Entity<Sale>().ToTable("Sales");
+
+            // Constraints
             builder.Entity<Sale>().HasKey(p => p.Id);
             builder.Entity<Sale>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Sale>().Property(p => p.DateAndTime).IsRequired();
             builder.Entity<Sale>().Property(p => p.ClientFullName).IsRequired().HasMaxLength(100);
-            
+
             builder.Entity<Sale>()
                 .HasMany(p => p.SaleDetails)
                 .WithOne(p => p.Sale)
@@ -106,6 +113,8 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
 
             // SaleDetails entity
             builder.Entity<SaleDetail>().ToTable("SaleDetails");
+
+            // Constraints
             builder.Entity<SaleDetail>().HasKey(p => p.Id);
             builder.Entity<SaleDetail>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<SaleDetail>().Property(p => p.Description).IsRequired().HasMaxLength(300);
@@ -116,23 +125,27 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
                     new SaleDetail
                     { Id = 100, Description = "Description SD1", Quantity = 100, SaleId = 150 },
                     new SaleDetail
-                    { Id = 100, Description = "Description SD2", Quantity = 200, SaleId = 151 }
+                    { Id = 101, Description = "Description SD2", Quantity = 200, SaleId = 151 }
 
                 );
+
             // Owners Entity
             builder.Entity<Owner>().ToTable("Owners");
+
+            // Constraints
             builder.Entity<Owner>().HasKey(p => p.Id);
             builder.Entity<Owner>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Owner>().Property(p => p.RUC).IsRequired().HasMaxLength(100);
+            builder.Entity<Owner>().Property(p => p.Ruc).IsRequired().HasMaxLength(100);
 
             builder.Entity<Owner>().HasData
                   (
                       new Owner
-                      { Id = 100, RUC = 202010213 },
+                      { Id = 200, Ruc = 202010213 },
                       new Owner
-                      { Id = 100, RUC = 202011212 }
+                      { Id = 201, Ruc = 202011212 }
 
                   );
+
         }
 
     }

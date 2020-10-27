@@ -10,17 +10,13 @@ namespace RestCode_WebApplication.Resources
     {
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
+        public string RestaurantName { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string Address { get; set; }
-
-        [MaxLength(9)]
-        public int CellphoneNumber { get; set; }
+        public string RestaurantAddress { get; set; }
 
         [Required]
-        [MaxLength(11)]
-        public long Ruc { get; set; }
+        public int RestaurantCellPhoneNumber { get; set; }
     }
 }
