@@ -27,10 +27,12 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
 
             builder.Entity<Publication>().HasData
                 (
-                    new Publication { Id = 100, 
+                    new Publication { 
+                        Id = 100, 
                         PublishedDate = DateTime.Parse("2020/01/03"), 
                         Description = "Mi nombre es Ana Lopez. Soy una consultora con 10 años de experiencia en el mercado." },
-                    new Publication { Id = 101, 
+                    new Publication { 
+                        Id = 101, 
                         PublishedDate = DateTime.Parse("2019/12/11"), 
                         Description = "Mi nombre es Luis Mamani. He trabajado por varios años como consultor de negocios en empresas reconocidas." }
                 );
@@ -43,11 +45,13 @@ namespace RestCode_WebApplication.Domain.Persistence.Contexts
 
             builder.Entity<Comment>().HasData
                 (
-                    new Comment { Id = 200, 
+                    new Comment { 
+                        Id = 200, 
                         PublishedDate = DateTime.Parse("2020/01/06"), 
                         Description = "La consultora Ana es muy confiable.", 
                         PublicationId = 100 },
-                    new Comment { Id = 201, 
+                    new Comment { 
+                        Id = 201, 
                         PublishedDate = DateTime.Parse("2019/12/20"), 
                         Description = "Las soluciones que planteó el consultor Luis para mi negocio fueron las mejores", 
                         PublicationId = 101 }
