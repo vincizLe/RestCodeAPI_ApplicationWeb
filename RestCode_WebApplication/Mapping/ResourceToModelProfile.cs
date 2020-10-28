@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RestCode_WebApplication.Mapping
 {
-    public class ResourceToModelProfile : Profile
+    public class ResourceToModelProfile : AutoMapper.Profile
     {
         public ResourceToModelProfile()
         {

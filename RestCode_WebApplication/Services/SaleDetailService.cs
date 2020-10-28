@@ -12,7 +12,7 @@ namespace RestCode_WebApplication.Services
     public class SaleDetailService : ISaleDetailService
     {
         private readonly ISaleDetailRepository _saleDetailRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        public readonly IUnitOfWork _unitOfWork;
 
         public SaleDetailService(ISaleDetailRepository  saleDetailRepository, IUnitOfWork unitOfWork)
         {
@@ -25,9 +25,9 @@ namespace RestCode_WebApplication.Services
             return await _saleDetailRepository.ListAsync();
         }
 
-        public async Task<IEnumerable<SaleDetail>> ListBySaleIdAsync(int categoryId)
+        public async Task<IEnumerable<SaleDetail>> ListBySaleIdAsync(int saleId)
         {
-            return await _saleDetailRepository.ListBySaleIdAsync(categoryId);
+            return await _saleDetailRepository.ListBySaleIdAsync(saleId);
         }
 
         public async Task<SaleDetailResponse> GetByIdAsync(int id)

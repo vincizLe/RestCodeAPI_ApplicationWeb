@@ -12,7 +12,7 @@ namespace RestCode_WebApplication.Services
     public class OwnerService : IOwnerService
     {
         private readonly IOwnerRepository _ownerRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        public readonly IUnitOfWork _unitOfWork;
 
         public OwnerService(IOwnerRepository  ownerRepository, IUnitOfWork unitOfWork)
         {

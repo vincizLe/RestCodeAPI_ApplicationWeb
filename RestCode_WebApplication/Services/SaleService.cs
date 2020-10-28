@@ -12,7 +12,7 @@ namespace RestCode_WebApplication.Services
     public class SaleService : ISaleService
     {
         private readonly ISaleRepository _saleRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        public readonly IUnitOfWork _unitOfWork;
 
         public SaleService(ISaleRepository  saleRepository, IUnitOfWork unitOfWork)
         {
