@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\GitHub\\RestcodeAPI_ApplicationWeb\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj": {}
+    "C:\\Users\\Richard\\OneDrive\\Desktop\\Vaina de Web\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\GitHub\\RestcodeAPI_ApplicationWeb\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj": {
+    "C:\\Users\\Richard\\OneDrive\\Desktop\\Vaina de Web\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\RestcodeAPI_ApplicationWeb\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\Richard\\OneDrive\\Desktop\\Vaina de Web\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
         "projectName": "RestCode_WebApplication",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\RestcodeAPI_ApplicationWeb\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\RestcodeAPI_ApplicationWeb\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\obj\\",
+        "projectPath": "C:\\Users\\Richard\\OneDrive\\Desktop\\Vaina de Web\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
+        "packagesPath": "C:\\Users\\Richard\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Richard\\OneDrive\\Desktop\\Vaina de Web\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Richard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
@@ -37,6 +41,32 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "MySql.Data.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.21, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -47,6 +77,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -55,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
