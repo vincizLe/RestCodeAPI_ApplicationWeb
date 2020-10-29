@@ -969,11 +969,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\RestCode_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
       "projectName": "RestCode_WebApplication",
-      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\RestCode_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
+      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\RestCode_WebApplication.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\RestCode_WebApplication\\RestCode_WebApplication\\obj\\",
+      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\RestCodeAPI_WebApplication\\RestCode_WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
