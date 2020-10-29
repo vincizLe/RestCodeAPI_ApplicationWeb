@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace RestCode_WebApplication.Mapping
 {
-    public class ResourceToModelProfile : Profile
+    public class ResourceToModelProfile : AutoMapper.Profile
     {
         public ResourceToModelProfile()
         {
-            CreateMap<SaveCategoryResource, Category>();
-            CreateMap<SaveProductResource, Product>();
-            CreateMap<SaveRestaurantResource, Restaurant>();
+            CreateMap<SaveAppointmentResource, Appointment>();
+            CreateMap<SaveAssignmentResource, Assignment>();
+            CreateMap<SaveConsultancyResource, Consultancy>();
         }
     }
 }
