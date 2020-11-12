@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QM25MtOfatRWUJHuAwEv7/3YfR7Rv8ATPII0UWLYlJSTGDr3zYOtb+TD16smOHoUi173OvFu5qd5GtI2HBkiuw==",
+  "dgSpecHash": "Hj/MJZG2wmQJN44ahc0NRGuFiuIKmBH6WgZzE0SSidajHUVaW95gIHZKT7LOUVCT0wiPe2/MJoETX0XWNX7kIg==",
   "success": true,
-  "projectFilePath": "/Users/nuevo/Documents/RestCodeAPI_WebApplication/RestCode_WebApplication/RestCode_WebApplication.csproj",
+  "projectFilePath": "/Users/nuevo/Documents/GitHub/RestCodeAPI_WebApplication/RestCode_WebApplication/RestCode_WebApplication.csproj",
   "expectedPackageFiles": [
     "/Users/nuevo/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/Users/nuevo/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.0/automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

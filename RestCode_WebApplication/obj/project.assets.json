@@ -6455,11 +6455,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nuevo/Documents/RestCodeAPI_WebApplication/RestCode_WebApplication/RestCode_WebApplication.csproj",
+      "projectUniqueName": "/Users/nuevo/Documents/GitHub/RestCodeAPI_WebApplication/RestCode_WebApplication/RestCode_WebApplication.csproj",
       "projectName": "RestCode_WebApplication",
-      "projectPath": "/Users/nuevo/Documents/RestCodeAPI_WebApplication/RestCode_WebApplication/RestCode_WebApplication.csproj",
+      "projectPath": "/Users/nuevo/Documents/GitHub/RestCodeAPI_WebApplication/RestCode_WebApplication/RestCode_WebApplication.csproj",
       "packagesPath": "/Users/nuevo/.nuget/packages/",
-      "outputPath": "/Users/nuevo/Documents/RestCodeAPI_WebApplication/RestCode_WebApplication/obj/",
+      "outputPath": "/Users/nuevo/Documents/GitHub/RestCodeAPI_WebApplication/RestCode_WebApplication/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

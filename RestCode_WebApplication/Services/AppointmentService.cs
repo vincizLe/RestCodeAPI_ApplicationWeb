@@ -57,7 +57,10 @@ namespace RestCode_WebApplication.Services
             if (existingAppointment == null)
                 return new AppointmentResponse("Appointment not found");
 
+            existingAppointment.CurrentDateTime = appointment.CurrentDateTime;
             existingAppointment.ScheduleDateTime = appointment.ScheduleDateTime;
+            existingAppointment.Topic = appointment.Topic;
+            existingAppointment.MeetLink = appointment.MeetLink;
 
             try
             {

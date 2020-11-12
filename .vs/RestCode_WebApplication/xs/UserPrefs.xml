@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{B9E284FF-AED6-4097-99A6-8F8654F7E521}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RestCode_WebApplication/Services/AppointmentService.cs">
+    <Files>
+      <File FileName="RestCode_WebApplication/Domain/Persistence/Contexts/AppDbContext.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Domain/Models/Appointment.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Controllers/AppointmentsController.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Persistence/Repositories/AppointmentRepository.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Services/AppointmentService.cs" Line="60" Column="81" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="RestCode_WebApplication" expanded="True">
+            <Node name="RestCode_WebApplication" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Domain" expanded="True">
+                <Node name="Models" expanded="True" />
+                <Node name="Persistence" expanded="True">
+                  <Node name="Contexts" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Mapping" expanded="True" />
+              <Node name="Persistence" expanded="True">
+                <Node name="Repositories" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="AppointmentService.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.RestCode__WebApplication PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>
