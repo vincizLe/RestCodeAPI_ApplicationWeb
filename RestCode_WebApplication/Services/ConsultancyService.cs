@@ -56,6 +56,7 @@ namespace RestCode_WebApplication.Services
                 return new ConsultancyResponse("Consultancy no found");
 
             existingConsultancy.Diagnosis= consultancy.Diagnosis;
+            existingConsultancy.Recommendation = consultancy.Recommendation;
 
             try
             {
