@@ -11,8 +11,8 @@ namespace RestCode_WebApplication.Domain.Models
         public int Id { get; set; }
         public DateTime CurrentDateTime { get; set; }
         public DateTime ScheduleDateTime { get; set; }
-        public String Topic { get; set; }
-        public String MeetLink { get; set; }
+        public string Topic { get; set; }
+        public string MeetLink { get; set; }
 
 
         //Relationships

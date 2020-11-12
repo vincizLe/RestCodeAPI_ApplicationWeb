@@ -1,10 +1,27 @@
 ﻿<Properties StartupConfiguration="{B9E284FF-AED6-4097-99A6-8F8654F7E521}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="RestCode_WebApplication/Services/ConsultancyService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RestCode_WebApplication/Domain/Models/Appointment.cs">
     <Files>
       <File FileName="RestCode_WebApplication/Services/AssignmentService.cs" Line="1" Column="1" />
       <File FileName="RestCode_WebApplication/Domain/Models/Assignment.cs" Line="1" Column="1" />
       <File FileName="RestCode_WebApplication/Domain/Models/Consultancy.cs" Line="1" Column="1" />
-      <File FileName="RestCode_WebApplication/Services/ConsultancyService.cs" Line="59" Column="40" />
+      <File FileName="RestCode_WebApplication/Services/ConsultancyService.cs" Line="59" Column="76" />
+      <File FileName="RestCode_WebApplication/Services/AppointmentService.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Domain/Persistence/Contexts/AppDbContext.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Domain/Repositories/IAppointmentRepository.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Domain/Repositories/IConsultancyRepository.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Domain/Services/Communication/AssignmentResponse.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Domain/Services/IConsultancyService.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Mapping/ResourceToModelProfile.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Mapping/ModelToResourceProfile.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Extensions/MiddlewareExtensions.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Extensions/ModelStateExtensions.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Extensions/EnumExtensions.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/appsettings.json" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Resources/AppointmentResource.cs" Line="13" Column="22" />
+      <File FileName="RestCode_WebApplication/Resources/ConsultancyResource.cs" Line="7" Column="22" />
+      <File FileName="RestCode_WebApplication/Resources/SaveAssignmentResource.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Resources/AssignmentResource.cs" Line="1" Column="1" />
+      <File FileName="RestCode_WebApplication/Domain/Models/Appointment.cs" Line="14" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,11 +29,21 @@
           <Node name="RestCode_WebApplication" expanded="True">
             <Node name="RestCode_WebApplication" expanded="True">
               <Node name="Domain" expanded="True">
-                <Node name="Models" expanded="True" />
+                <Node name="Models" expanded="True">
+                  <Node name="Appointment.cs" selected="True" />
+                </Node>
+                <Node name="Persistence" expanded="True">
+                  <Node name="Contexts" expanded="True" />
+                </Node>
+                <Node name="Repositories" expanded="True" />
+                <Node name="Services" expanded="True">
+                  <Node name="Communication" expanded="True" />
+                </Node>
               </Node>
-              <Node name="Services" expanded="True">
-                <Node name="ConsultancyService.cs" selected="True" />
-              </Node>
+              <Node name="Extensions" expanded="True" />
+              <Node name="Mapping" expanded="True" />
+              <Node name="Resources" expanded="True" />
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
